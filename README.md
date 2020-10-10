@@ -145,10 +145,10 @@ The Python code calls for these summary results to output to the terminal view a
 
 ## Election-Audit Summary
  
-This code works beautifully for an isolated race like this one, and with modifications it can be applied to any race that has the same input file structure.  As the code is written, it reads in the names of the counties and the candidates rather than have the names hardcoded (see previous code blocks).  This allows the code to work regardless of which county or which candidates are involved in the election being audited.  It is flexible and dynamic in that way. 
+As the code is written, it reads in the names of the counties and the candidates rather than have the names hardcoded (see previous code blocks).  This allows the code to work regardless of which county or which candidates are involved in the election being audited.  It is flexible and dynamic in that way. Bottom line, this code works beautifully for an isolated race like this one, and with modifications it can be applied to any race that has the same input file structure.  
 
 ### Code Modification
-There can be slight code modifications to make the code even more adpatable to any election.
+Here are some modification suggestions to make the code even more adpatable to any election.
 
 **Modification 1:** Any single item on a ballot can be audited using this code as long as there are three data items:
 
@@ -182,7 +182,7 @@ In fact, take it a step further and define these variables, lists, and dictionar
         f"-------------------------\n"))
   
       
-By combining Modifiction 1 (modifying the variable, list, and dictionary names) and Modification 2 (defining a race_ID variable), the output summary could look something like this:
+By combining Modification 1 (modifying the variable, list, and dictionary names) and Modification 2 (defining a race_ID variable), the output summary could look something like this:
  ``` 
  
     	  # Print the final vote count (to terminal)
