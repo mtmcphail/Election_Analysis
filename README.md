@@ -7,17 +7,17 @@ A Colorado Board of Elections employee was given the following tasks to complete
 2. Get a complete list of candidates who recoeved votes
 3. Calculate the total number of votes each candidate received.
 4. Calculate the percentage of votes each candidate won.
-5. Determine the winner of the election based on the popular vote.
-
-##Resources
+5. Determine the winner of the election based on the popular vote.  
+  
+## Resources
 * Date Source: election_results.csv: located in the Resources file of this repository
 
 * Software: Python 3.7.6 and Visioual Studio Code 1.xx.x
 
-##Summary
+## Summary
 The analysis of the election data shows that:
 
-* There were 369,111 votes cast in this election.
+* There were **369,111** votes cast in this election.
  
 * The candidates running were (in alphabetical order):
 	* Diana DeGette
@@ -31,8 +31,8 @@ The analysis of the election data shows that:
 * The winner of the election was: 
 	* Diana DeGette, who recieved 272,892 votes representing 73.8% of the total vote.
 
-##Challenge Overview
+## Challenge Overview
 
-##Challenge Summary
+## Challenge Summary
 
  
