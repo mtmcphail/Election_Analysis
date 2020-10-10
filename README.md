@@ -14,7 +14,7 @@ Certifying this election includes the following tasks:
 4. Calculate the percentage of votes each candidate received.
 5. Determine the winner of the election based on the popular vote.
 
-In addition, Sam would like an audit of the voter turnout by county. Specifically, he would like Sam to report on: 
+In addition, Sam would like an audit of the voter turnout by county. Specifically, he would like Tom to report on: 
 
 * the voter turnout for each county (i.e. *total votes cast per county*),
 * the percentage of all votes cast from each county, and
@@ -28,7 +28,7 @@ The votes cast for this election were done so through 3 primary voting methods:
 3. Direct Recording Electronic reading machine: *computer-counted*
 
 The results of these sources can be found in the comma delimited file, 
-**election_results.csv**, located in the Resources file of this repository.  The data set includes: Ballot ID, County, and Candidate.
+**election_results.csv**, located in the Resources folder of this repository.  The data set includes: Ballot ID, County, and Candidate.
 
 The software used, Python version 3.7.6 along with the code editor, Visual Studio Code version 1.49.3.
 
@@ -59,7 +59,7 @@ The analysis of the election data shows that:
 ### **Voter Turnout by County**
 * Votes were cast in the following counties: Arapahoe, Denver, Jefferson.  
  
-* The code written to identify the counties the voters reside and tally the vote count per county is as follows:
+* The code written to identify the counties the voters reside and tally the vote count per county:
 
 	    # Decision statement that checks the county does not match any existing county in the county list.
         if county_name not in county_options:
@@ -81,7 +81,7 @@ County results in alphabetical order:
 2.  **Denver County** had **306,055** votes cast representing **82.8%** of the vote.
 3.  **Jefferson County** had **38,855** votes cast representing **10.5%** of the vote.
 
-* The code written to calculate the percentage of total votes cast per county as well as identify the county with the largest turnout, as reported above, is as follows:
+* The code written to calculate the **percentage of total votes cast per county** as well as identify the county with the largest turnout, as reported above, is as follows:
                	
 		# Repetition statement to get the county from the county dictionary.
 		for county_name in county_vote_dict:        
@@ -122,7 +122,7 @@ Candidate results in alphabetical order:
 2. **Raymon Anthony Doane** recievd **11,606** votes representing **3.1%** of the vote.
 3. **Charles Casper Stockham** recieved **85,213** votes representing **23.0%** of the vote.  
 
-* The code written to calculate the percentage of total votes won by each candidate, as reported above, is as follows:
+* The code written to calculate the **percentage of total votes won** by each candidate, as reported above, is as follows:
     
 
         # To calculate the percentage total votes won
@@ -137,7 +137,7 @@ Candidate results in alphabetical order:
 
 
 ### Code Ouput
-The Python code for these summary results output to the terminal view as well as to a text file, named **election_analysis.txt** also included in this repository.  Please see the terminal screenshot below.  
+The Python code calls for these summary results to output to the terminal view as well as to a text file, named **election_analysis.txt** also included in this repository.  Please see the terminal screenshot below.  
 
 **Screenshot of terminal output for Python code: PyPoll_Challenge.py**
 
@@ -160,40 +160,39 @@ The variable, list, and dictionary names can be redefined within the code to ref
 
 For example: 
 
-	* County could be changed to School_District for a School Board election
-			county_name => school_dist_name  
-			
-	* Candidate could be changed to Yes_No for a proposition or measure election
+* County could be changed to School District for a School Board election
+			county_name => school_dist_name
+* Candidate could be changed to Yes/No for a proposition or measure election
 			candidate_name => yes_no
-			  
-	* County can be changed to Political Party for a measure to audit which political party cast more votes for that initiative.
+* County can be changed to Political Party for a measure to audit which political party cast more votes for that initiative.
 		county => pol_party
 
 In fact, take it a step further and define these variables, lists, and dictionaries using broader labels, like vote_description and vote_response. No code updates necessary, just an understanding of the source data. 
 
-**Modification 2:**  The summary of the output is a long "f" string with variables interjected, which makes modifying the output to be more specific to the election being audited simple. Either updating the string or creating a variable to identify the race can be included in the summary output.  Original code for the winning candiate summary: 
+**Modification 2:**  The summary of the output is a list of "f" strings with variables interjected, which makes modifying the output to be more specific to the election simple. Either updating the string directing or creating a variable to identify the race can be included in the summary output.  Original code for the total votes cast: 
 
-
-       # Print the winning candidate summary (to the terminal) 
-    	winning_candidate_summary = (
-        f"\n-------------------------\n"
-        f"Winner: {winning_candidate}\n"
-        f"Winning Vote Count: {winning_count:,}\n"
-        f"Winning Percentage: {winning_percentage:.1f}%\n"
-        f"-------------------------\n")
-    print(winning_candidate_summary)  
+       
+    # Print the final vote count (to terminal)
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n\n"
+        f"County Votes:\n"
+        f"-------------------------\n"))
+  
       
-Combining example 1 (modifying the variable, list, and dictionary names) and example 2 (defining a race_ID variable), the output summary could look something like this:
+By combining Modifiction 1 (modifying the variable, list, and dictionary names) and Modification 2 (defining a race_ID variable), the output summary could look something like this:
  ``` 
- # Print the winning vote summary (to the terminal) 
-    	winning_vote_summary = (
-        f"\n-------------------------\n"
-        f"Winner of {race_ID}: {winning_vote}\n"
-        f"Winning Vote Count: {winning_count:,}\n"
-        f"Winning Percentage: {winning_percentage:.1f}%\n"
-        f"-------------------------\n")
-    print(winning_vote_summary```
-
+ 
+    	  # Print the final vote count (to terminal)
+    	election_results = (
+        	f"\nElection Results {race_ID}\n"
+        	f"-------------------------\n"
+        	f"Total Votes: {total_votes:,}\n"
+        	f"-------------------------\n\n"
+        	f"County Votes:\n"
+        	f"-------------------------\n")) ```  
 
 **Modification 3:** Unless the input file is located in the same folder with the same name, the ```file_to_load``` statement will need to be modified to ensure the correct data is being read in.		
 
