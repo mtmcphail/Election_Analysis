@@ -59,7 +59,7 @@ The analysis of the election data shows that:
 ### **Voter Turnout by County**
 * Votes were cast in the following counties: Arapahoe, Denver, Jefferson.  
  
-***The code written to identify the list of counties included in these results and tally the vote count per county is as follows:***
+* The code written to identify the counties the voters reside and tally the vote count per county is as follows:
 
 	    # Decision statement that checks the county does not match any existing county in the county list.
         if county_name not in county_options:
@@ -75,11 +75,13 @@ The analysis of the election data shows that:
         
  
        
-* **Arapahoe County** had **24,801** votes cast representing **6.7%** of the vote. 
-* **Denver County** had **306,055** votes cast representing **82.8%** of the vote.
-* **Jefferson County** had **38,855** votes cast representing **10.5%** of the vote.
+County results in alphabetical order:
 
-***The code written to calculate the percentage of total votes cast per county as well as identify the county with the largest turnout, as reported above, is as follows:***
+1.  **Arapahoe County** had **24,801** votes cast representing **6.7%** of the vote. 
+2.  **Denver County** had **306,055** votes cast representing **82.8%** of the vote.
+3.  **Jefferson County** had **38,855** votes cast representing **10.5%** of the vote.
+
+* The code written to calculate the percentage of total votes cast per county as well as identify the county with the largest turnout, as reported above, is as follows:
                	
 		# Repetition statement to get the county from the county dictionary.
 		for county_name in county_vote_dict:        
@@ -100,7 +102,7 @@ The analysis of the election data shows that:
 
 ### **Candidate Results**
 
-* Votes were cast for three (3) candidates.  They are Diana DeGette, Raymon Anthony Doane, and Charles Casper Stockham.  The code used to determine the candidates included in the results and how many votes each candidate won is as follows:
+* Votes were cast for three (3) candidates: Diana DeGette, Raymon Anthony Doane, and Charles Casper Stockham.  The code used to identify the candidates and how many votes each candidate won is as follows:
 
          # If the candidate does not match any existing candidate add it to the candidate list
          if candidate_name not in candidate_options:
@@ -114,6 +116,8 @@ The analysis of the election data shows that:
         # Add a vote to that candidate's count
         candidate_votes[candidate_name] += 1 
                
+Candidate results in alphabetical order:  
+
 1. **Diana DeGette** recieved **272,892** votes representing **73.8%** of the vote.
 2. **Raymon Anthony Doane** recievd **11,606** votes representing **3.1%** of the vote.
 3. **Charles Casper Stockham** recieved **85,213** votes representing **23.0%** of the vote.  
@@ -129,57 +133,88 @@ The analysis of the election data shows that:
         	vote_percentage = float(votes) / float(total_votes) * 100
 
 	
-* Clear winner of the election: **Diana DeGette** who won **73.8%** of the votes
+* Clear winner of the election: **Diana DeGette** who won **73.8%** of the votes.
 
 
+### Code Ouput
 The Python code for these summary results output to the terminal view as well as to a text file, named **election_analysis.txt** also included in this repository.  Please see the terminal screenshot below.  
 
-**Screenshot of terminal output for Pyhton code: PyPoll_Challenge.py**
+**Screenshot of terminal output for Python code: PyPoll_Challenge.py**
 
 ![Election_Ouput](./Resources/election_results_output.png)
 
 ## Election-Audit Summary
  
-This code works beautifully for an isolated race like this one.  It reads in the names of the counties and the candidates rather than have the names hardcoded; this allows the code to work regardless of which county or which candidates the audit team is looking at.  It is flexible in that way. 
+This code works beautifully for an isolated race like this one, and with modifications it can be applied to any race that has the same input file structure.  As the code is written, it reads in the names of the counties and the candidates rather than have the names hardcoded (see previous code blocks).  This allows the code to work regardless of which county or which candidates are involved in the election being audited.  It is flexible and dynamic in that way. 
 
-However, as it is written, the code reflects and is **limited by**, the input data, which in this case is only the Ballot ID, County and Candidate Name. So the code can be run for any race, but only for a very specific race.  As we know there are many different items on a ballot.
+### Code Modification
+There can be slight code modifications to make the code even more adpatable to any election.
 
-### Code Modifications
-If additional data is included in the election results file, the code can be modified to perform similar summaries across multiple races and even measures and propositions by reading in additional lists to the ballot dictionaries.  Of course that would depend on how the results are captured: 
+**Modification 1:** Any single item on a ballot can be audited using this code as long as there are three data items:
 
-* All votes cast for all races in one field, as we see here, then an additional field would be needed, "ballot item identifier", to distinguish between the different races.  Something more like:
+* a unique Ballot ID,
+* a description of the registrant (geography, age, political affiliation) and 
+* a vote, whether it be in the form of candidate names or a "yes"/"no" vote for Measures and Propositions.
+
+The variable, list, and dictionary names can be redefined within the code to reflect the different election characteristics, but the analysis need not change.
+
+For example: 
+
+	* County could be changed to School_District for a School Board election
+			county_name => school_dist_name  
+			
+	* Candidate could be changed to Yes_No for a proposition or measure election
+			candidate_name => yes_no
+			  
+	* County can be changed to Political Party for a measure to audit which political party cast more votes for that initiative.
+		county => pol_party
+
+In fact, take it a step further and define these variables, lists, and dictionaries using broader labels, like vote_description and vote_response. No code updates necessary, just an understanding of the source data. 
+
+**Modification 2:**  The summary of the output is a long "f" string with variables interjected, which makes modifying the output to be more specific to the election being audited simple. Either updating the string or creating a variable to identify the race can be included in the summary output.  Original code for the winning candiate summary: 
+
+
+       # Print the winning candidate summary (to the terminal) 
+    	winning_candidate_summary = (
+        f"\n-------------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"Winning Vote Count: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}%\n"
+        f"-------------------------\n")
+    print(winning_candidate_summary)  
+      
+Combining example 1 (modifying the variable, list, and dictionary names) and example 2 (defining a race_ID variable), the output summary could look something like this:
+ ``` 
+ # Print the winning vote summary (to the terminal) 
+    	winning_vote_summary = (
+        f"\n-------------------------\n"
+        f"Winner of {race_ID}: {winning_vote}\n"
+        f"Winning Vote Count: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}%\n"
+        f"-------------------------\n")
+    print(winning_vote_summary```
+
+
+**Modification 3:** Unless the input file is located in the same folder with the same name, the ```file_to_load``` statement will need to be modified to ensure the correct data is being read in.		
+
+**Visualization modification:** The output could be easier to read by ***sorting the results in descending order*** to show winning result on top, rather than outputting in the order the list is created (i.e. the result of how the candidate_options and county_options lists are created).
+
+### Next Steps
+If loading separate files for each race is too cumbersome, what if we wanted to expand the code to be able to read multiple elections from one file? As it is written, the code reflects and is **limited by the input data**. While the code can be run for any race, it can only be run for one (1) race at a time. 
+
+Additional input data is required to increase the scope of these audits, and ***as the scope of input increases, the code changes to adapt*** to the different scenarios.  
+
+1. All votes cast for all races in one field, as we see here, then an additional field would be needed to distinguish between the different races, a ballot item identifier.  Something more like:
 
 ![New_input_data](./Resources/new_data_1.png)
 
-In which case, the code would have to be modified to read in each of the Ballot Items and create a new dictionary for each item and then run the same analysis for each item. 
-Dictionaries such as:
-
-* Elections: president, senate, congress_1, congress_2, etc. (list of candidates)
-* Measures: measure_A, measure_B, etc (boolean, yes/no)
-* Propositions: prop__20, prop_30, etc. (boolean, yes/no)
+In which case, the code would have to be modified to read in each of the Ballot Items and run the code for each of the races in nested loops.  But this would be very cumbersome
 
 OR
 
-* Each Ballot Id is a unique entry with each of the possible Ballot Items being a separate field.  Something like:
+2. Each Ballot Id is a unique entry with each of the possible Ballot Items being a separate field.  Something like:
 ![New_input_data2](./Resources/new_data_2.png)
 
-This would be a cleaner format for the election data and ultimately easier to analyze.
-One initial change in the code would be rather then skipping over the header row, **the header would be read in to get the keys for each dictionary representing each election item**. 
+This would be a cleaner format for the election data and ultimately easier to analyze.  With sample input data like this, one initial change in the code would be to ***utilize the variable, header***. In the current code, the statement ```header = next(reader)``` is used to basically advance the file reader to the second line of data to start reading in the election results. With the expansion of the input data, **the "header" variable can dynamically determine the keys for each dictionary representing each election item**. 
 
-An easy way to read in this data and anlysize it would be to use the very popular, very powerful ***Pandas*** module. Initate the module when the others are imported (csv, os, etc)  ```import pandas as pd``` By utlizing this very helpful library of functions and short cuts, the expanded csv file can be read in as a data frame, akin to a very large and complex dictionary, and can be "grouped by" results for each series or list.  
-
-Read in .cvs file similar to current code:
-```election_results_to_load = os.path.join("Resources", "election_results.csv")```
-
-Create a data frame
-```election_data_df = pd.read_csv(election_results_to_load)```
-
-Group by each of the ballot items, for example: District 1 Congressional race  
-```congress_1 = election_data_df.groupby(["Congress_District_1"]).count()["Ballot_ID"]```
-This statement creates a series (or list or array) where the names of the candidates becomes the index and tallies (or counts) the Ballot IDs.
-
-Finally, a comestic modification needs to be incorporated, the results should be sorted in descending order to show winning result on top, rather than 
-
-```Congress_1.sort_values(ascending=False)```
-
-As the data is expanded, the scope of this current code needs to as well; incorporating pandas is an excellent way to achieve cleaner, easier to adapt code.
+As the data is expanded, the scope of this current code needs to as well; but the good news is that Python is very capable of handling these larger projects!
