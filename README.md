@@ -192,7 +192,8 @@ By combining Modification 1 (modifying the variable, list, and dictionary names)
         	f"Total Votes: {total_votes:,}\n"
         	f"-------------------------\n\n"
         	f"County Votes:\n"
-        	f"-------------------------\n")) ```  
+        	f"-------------------------\n"))
+        	```
 
 **Modification 3:** Unless the input file is located in the same folder with the same name, the ```file_to_load``` statement will need to be modified to ensure the correct data is being read in.		
 
@@ -216,4 +217,4 @@ OR
 
 This would be a cleaner format for the election data and ultimately easier to analyze.  With sample input data like this, one initial change in the code would be to ***utilize the variable, header***. In the current code, the statement ```header = next(reader)``` is used to basically advance the file reader to the second line of data to start reading in the election results. With the expansion of the input data, **the "header" variable can dynamically determine the keys for each dictionary representing each election item**. 
 
-As the data is expanded, the scope of this current code needs to as well; but the good news is that Python is very capable of handling these larger projects!
+As the data is expanded, the scope of this current code needs to as well; but the good news is that Python is very capable of handling these larger projects.
