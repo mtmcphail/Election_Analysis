@@ -37,7 +37,7 @@ Let's see what we find....
 ## Election-Audit Results
 The analysis of the election data shows that:
 
-###**Overall Voter Turnout** 
+### **Overall Voter Turnout** 
 
 * There were **369,111** votes cast in this election. The total votes was calculated after reading in the .csv file, initializing the variable total_votes to 0 and looping through the data adding a vote for each row read in:
  
@@ -56,7 +56,7 @@ The analysis of the election data shows that:
         total_votes +=1         
 ```
 
-###**Voter Turnout by County**
+### **Voter Turnout by County**
 * Votes were cast in the following counties: Arapahoe, Denver, Jefferson.  
  
 ***The code written to identify the list of counties included in these results and tally the vote count per county is as follows:***
@@ -98,7 +98,7 @@ The analysis of the election data shows that:
 * The county with the largest voter turnout is clearly **Denver County** with **306,055** votes cast.
 
 
-###**Candidate Results**
+### **Candidate Results**
 
 * Votes were cast for three (3) candidates.  They are Diana DeGette, Raymon Anthony Doane, and Charles Casper Stockham.  The code used to determine the candidates included in the results and how many votes each candidate won is as follows:
 
@@ -144,7 +144,7 @@ This code works beautifully for an isolated race like this one.  It reads in the
 
 However, as it is written, the code reflects and is **limited by**, the input data, which in this case is only the Ballot ID, County and Candidate Name. So the code can be run for any race, but only for a very specific race.  As we know there are many different items on a ballot.
 
-###Code Modifications
+### Code Modifications
 If additional data is included in the election results file, the code can be modified to perform similar summaries across multiple races and even measures and propositions by reading in additional lists to the ballot dictionaries.  Of course that would depend on how the results are captured: 
 
 * All votes cast for all races in one field, as we see here, then an additional field would be needed, "ballot item identifier", to distinguish between the different races.  Something more like:
