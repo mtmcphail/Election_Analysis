@@ -182,17 +182,10 @@ In fact, take it a step further and define these variables, lists, and dictionar
         f"-------------------------\n"))
   
       
-By combining Modification 1 (modifying the variable, list, and dictionary names) and Modification 2 (defining a race_ID variable), the output summary could look something like this:
-```# Print the final vote count (to terminal)
-
-    	election_results = (
-        	f"\nElection Results {race_ID}\n"  
-        	f"-------------------------\n"  
-        	f"Total Votes: {total_votes:,}\n"  
-        	f"-------------------------\n\n"  
-        	f"County Votes:\n"  
-        	f"-------------------------\n"))```
-        	
+By combining Modification 1 (modifying the variable, list, and dictionary names) and Modification 2 (defining a race_ID variable), the code could look something like this: ```election_results = (f"\nElection Results For Congressional District 1\n"```  
+or  
+```election_results = (f"\nElection Results For {race_ID}\n"```
+	
 
 **Modification 3:** Unless the input file is located in the same folder with the same name, the ```file_to_load``` statement will need to be modified to ensure the correct data is being read in.		
 
