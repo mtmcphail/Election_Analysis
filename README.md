@@ -3,9 +3,9 @@
 
 
 ## Overview of Election Audit
-A Colorado Board of Elections employee, Tom, was given the tasks to complete an audit of a recent election for Colorado's 1st Congressional District. This district contains spans Denver and parts of Arapahoe and Jefferson counties.
+A Colorado Board of Elections employee, Tom, was given the tasks to complete an audit of a recent election for Colorado's 1st Congressional District. This district spans Denver and parts of Arapahoe and Jefferson counties.
 
-Normally, completed in Excel, Tom's boss, Sam, wants to know if this can be done in Python.  If so, the code written for this election will be used for other, larger elections. 
+Normally, completed in Excel, Tom's boss, Sam, wants to know if this can be done in Python.  If so, the code written for this election will be used for other, possibly larger elections. 
 
 Certifying this election includes the following tasks: 
 1. Calculate the total number of votes cast.
@@ -35,7 +35,6 @@ The software used, Python version 3.7.6 along with the code editor, Visual Studi
 Let's see what we find....
 
 ## Election-Audit Results
-The analysis of the election data shows that:
 
 ### **Overall Voter Turnout** 
 
@@ -139,9 +138,13 @@ Candidate results in alphabetical order:
 ### Code Ouput
 The Python code calls for these summary results to output to the terminal view as well as to a text file, named **election_analysis.txt** also included in this repository.  Please see the terminal screenshot below.  
 
-**Screenshot of terminal output for Python code: PyPoll_Challenge.py**
+**Screenshot of terminal output of Python code, PyPoll_Challenge.py**
 
 ![Election_Ouput](./Resources/election_results_output.png)
+
+**Screenshot of text file output of Python code, PyPoll_Challenge.py**
+
+![Election_Ouput2](./Resources/output_text.png)
 
 ## Election-Audit Summary
  
@@ -160,12 +163,9 @@ The variable, list, and dictionary names can be redefined within the code to ref
 
 For example: 
 
-* County could be changed to School District for a School Board election
-			county_name => school_dist_name
-* Candidate could be changed to Yes/No for a proposition or measure election
-			candidate_name => yes_no
-* County can be changed to Political Party for a measure to audit which political party cast more votes for that initiative.
-		county => pol_party
+* County could be changed to School District for a School Board election (*e.g. county_name => school_dist_name*).
+* Candidate could be changed to Yes/No for a proposition or measure election (*e.g. candidate_name => yes_no*).
+* County can be changed to Political Party for a measure to audit which political party cast more votes for that (*e.g. initiative county => pol_party*)
 
 In fact, take it a step further and define these variables, lists, and dictionaries using broader labels, like vote_description and vote_response. No code updates necessary, just an understanding of the source data. 
 
